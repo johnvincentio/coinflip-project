@@ -29,10 +29,11 @@ class App extends React.Component {
 		console.log('isHeads ', isHeads);
 
 		this.setState(prevState => {
-			if (isHeads) {
-				return ({ isHeads, heads: prevState.heads + 1 });
-			}
-			return ({ isHeads: false, tails: prevState.tails + 1 });
+			return ({ 
+				isHeads,
+				heads: isHeads ? prevState.heads + 1 : prevState.heads,
+				tails: isHeads ? prevState.tails : prevState.tails + 1
+			});
 		});
 	}
 
