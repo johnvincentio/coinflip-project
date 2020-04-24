@@ -9,10 +9,11 @@ class Coin extends React.Component {
 
 	render() {
 		console.log('Coin::render(); this.props ', this.props);
+		const jpg = this.props.heads ? `images/heads.jpg` : `images/tails.jpg`;
 
 		return (
-			<div>
-				Coin
+			<div className="coin">
+				<img src={jpg} alt={this.props.heads ? 'heads' : 'tails'} />
 			</div>
 		);
 	}

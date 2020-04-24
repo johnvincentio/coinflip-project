@@ -39,10 +39,10 @@ class App extends React.Component {
 	render() {
 		console.log('App::render(); this.state ', this.state, ' this.props ', this.props);
 		const total = this.state.heads + this.state.tails
-		const status = `Out of ${total} flips, there have been ${this.state.heads} heads and ${this.state.tails} tails`;
+		const status = `Out of ${total} flips, there have been ${this.state.heads} heads and ${this.state.tails} tails.`;
 		return (
 			<div className="app">
-				<div className="app--title">Let&quot;s flip a coin</div>
+				<div className="app--title">Let&apos;s flip a coin</div>
 				<Coin heads={this.state.isHeads} />
 				<div>
 					<button type="button" className="app--button" onClick={this.flipCoin}>

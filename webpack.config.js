@@ -136,7 +136,12 @@ const plugins = [
 	HTMLPlugin,
 
 	extractSCSSBundle, // create css bundle from scss
-	extractCSSBundle // allow import file.css
+	extractCSSBundle, // allow import file.css
+
+	// copy images
+	new CopyWebpackPlugin([{ from: 'src/images', to: 'images' }], {
+		debug: copyWebpackPluginOptions
+	})
 ];
 
 if (PRODUCTION_MODE) {
