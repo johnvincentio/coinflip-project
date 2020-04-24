@@ -7,25 +7,32 @@ import Coin from './Coin';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			heads: 0,
-			tails: 0
-		};
+		const isHeads = this.generateCoin();
+		if (isHeads) {
+			this.state = { isHeads, heads: 1, tails: 0 };
+		}
+		else {
+			this.state = { isHeads, heads: 0, tails: 1 };
+		}
 	}
 
-	componentDidMount() {
-		this.flipCoin();
+	generateCoin = () => {
+		console.log('App::generateCoin()');
+		const heads = Math.floor(Math.random() * 2) === 0;
+		console.log('heads ', heads);
+		return heads;
 	}
 
 	flipCoin = () => {
-		const coinHeads = Math.floor(Math.random() * 2) === 0;
-		console.log('coinHeads ', coinHeads);
+		console.log('App::flipCoin()');
+		const isHeads = this.generateCoin();
+		console.log('isHeads ', isHeads);
 
 		this.setState(prevState => {
-			if (coinHeads) {
-				return ({ coinHeads, heads: prevState.heads + 1 });
+			if (isHeads) {
+				return ({ isHeads, heads: prevState.heads + 1 });
 			}
-			return ({ coinHeads: false, tails: prevState.tails + 1 });
+			return ({ isHeads: false, tails: prevState.tails + 1 });
 		});
 	}
 
@@ -36,7 +43,7 @@ class App extends React.Component {
 		return (
 			<div className="app">
 				<div className="app--title">Let&quot;s flip a coin</div>
-				<Coin />
+				<Coin heads={this.state.isHeads} />
 				<div>
 					<button type="button" className="app--button" onClick={this.flipCoin}>
 					Flip the Coin

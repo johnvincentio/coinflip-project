@@ -3,6 +3,7 @@
 /* eslint-disable react/prefer-stateless-function */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Coin extends React.Component {
 
@@ -16,5 +17,9 @@ class Coin extends React.Component {
 		);
 	}
 }
+
+Coin.propTypes = {
+	heads: PropTypes.bool.isRequired
+};
 
 export default Coin;
